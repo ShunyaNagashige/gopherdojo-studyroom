@@ -12,28 +12,70 @@ type SearchInput struct {
 	format string
 }
 
+//エラーの存在が期待された通りになっているかチェック
+func CheckErr(t *testing.T, isErrExpected bool, err error) bool {
+	t.Helper()
+
+	//エラーが期待されない(nilが期待される)場合
+	if !isErrExpected {
+		if err != nil {
+			//t.Errorf("case[%s] err should be nil,but got:%s", t.Name(), err)
+			return false
+		}
+
+		return true
+	}
+
+	//エラーが期待されているがnilであった場合
+	if err == nil {
+		//t.Errorf("case[%s] err should not be nil,but got:%s", t.Name(), err)
+		return false
+	}
+
+	return true
+}
+
 func TestSearch(t *testing.T) {
+
 	cases := []struct {
-		name     string
-		input    SearchInput
+		name  string
+		input SearchInput
+		//エラーが存在するかどうか
+		isErr    bool
 		expected []string
 	}{
 		{
-			name:     "ok",
+			name:     "png",
 			input:    SearchInput{dir: ".", format: "png"},
+			isErr:    false,
 			expected: []string{"testdata/dog_hachi_sasareta.png"},
 		},
-		//(メモ)search関数内のfilepath.Walkがどうすればエラーを吐き出すかわからない
+		{
+			name:     "jpg",
+			input:    SearchInput{dir: ".", format: "jpg"},
+			isErr:    false,
+			expected: []string{"testdata/itu.jpg"},
+		},
+		{
+			name:     "gif",
+			input:    SearchInput{dir: ".", format: "gif"},
+			isErr:    false,
+			expected: []string{"testdata/pop.gif"},
+		},
 	}
 
 	for _, c := range cases {
+		c := c
 		t.Run(c.name, func(t *testing.T) {
-			t.Helper()
+			actual, err := image.Search(c.input.dir, c.input.format)
 
-			actual, _ := image.Search(c.input.dir, c.input.format)
+			if !CheckErr(t, c.isErr, err) {
+				t.Errorf("case[%s]: expected isErr = %t ,but actual isErr = %t, err = %s",
+					c.name, c.isErr, !(c.isErr), err)
+			}
 
 			if len(actual) != len(c.expected) {
-				t.Errorf("実際の出力と期待値の,len()の値が異なります: want Search(%s,%s) = %s, got %s",
+				t.Errorf("実際の出力と期待値の,lengthが異なります: want Search(%s,%s) = %s, got %s",
 					c.input.dir, c.input.format, c.expected, actual)
 			}
 
@@ -47,7 +89,7 @@ func TestSearch(t *testing.T) {
 	}
 }
 
-func ExampleSearch(){
-	fmt.Println(image.Search(".","png"))
+func ExampleSearch() {
+	fmt.Println(image.Search(".", "png"))
 	// output: [testdata/dog_hachi_sasareta.png] <nil>
 }

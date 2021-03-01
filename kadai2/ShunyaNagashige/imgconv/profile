@@ -1,0 +1,26 @@
+mode: set
+github.com/ShunyaNagashige/imgconv/image/convert.go:25.41,27.2 1 0
+github.com/ShunyaNagashige/imgconv/image/convert.go:29.38,31.2 1 0
+github.com/ShunyaNagashige/imgconv/image/convert.go:33.54,37.16 2 1
+github.com/ShunyaNagashige/imgconv/image/convert.go:40.2,43.16 3 1
+github.com/ShunyaNagashige/imgconv/image/convert.go:48.2,53.16 4 1
+github.com/ShunyaNagashige/imgconv/image/convert.go:58.2,59.15 2 1
+github.com/ShunyaNagashige/imgconv/image/convert.go:64.2,67.19 2 1
+github.com/ShunyaNagashige/imgconv/image/convert.go:82.2,82.12 1 0
+github.com/ShunyaNagashige/imgconv/image/convert.go:37.16,39.3 1 1
+github.com/ShunyaNagashige/imgconv/image/convert.go:43.16,45.3 1 0
+github.com/ShunyaNagashige/imgconv/image/convert.go:53.16,55.3 1 0
+github.com/ShunyaNagashige/imgconv/image/convert.go:59.15,60.36 1 1
+github.com/ShunyaNagashige/imgconv/image/convert.go:60.36,62.4 1 0
+github.com/ShunyaNagashige/imgconv/image/convert.go:68.13,69.45 1 0
+github.com/ShunyaNagashige/imgconv/image/convert.go:72.21,73.51 1 0
+github.com/ShunyaNagashige/imgconv/image/convert.go:76.13,77.50 1 0
+github.com/ShunyaNagashige/imgconv/image/convert.go:69.45,71.4 1 0
+github.com/ShunyaNagashige/imgconv/image/convert.go:73.51,75.4 1 0
+github.com/ShunyaNagashige/imgconv/image/convert.go:77.50,79.4 1 0
+github.com/ShunyaNagashige/imgconv/image/search.go:8.61,12.56 2 1
+github.com/ShunyaNagashige/imgconv/image/search.go:22.2,22.21 1 1
+github.com/ShunyaNagashige/imgconv/image/search.go:12.56,13.43 1 1
+github.com/ShunyaNagashige/imgconv/image/search.go:16.4,16.14 1 1
+github.com/ShunyaNagashige/imgconv/image/search.go:13.43,15.5 1 1
+github.com/ShunyaNagashige/imgconv/image/search.go:18.16,20.3 1 0
