@@ -30,7 +30,7 @@ func (err *FileError) Error() string {
 	return err.Err.Error()
 }
 
-func Convert(src, srcFormat, dstFormat string) error {
+func Convert(src, srcFormat, dstFormat string) (rerr error) {
 
 	//読み込み用にファイルを開く
 	sf, err := os.Open(src)
@@ -55,13 +55,11 @@ func Convert(src, srcFormat, dstFormat string) error {
 	}
 
 	//df.Close()のエラー処理
-	var rerr error
 	defer func() {
 		if err := df.Close(); err != nil {
 			rerr = &FileError{Fn: src, Err: err}
 		}
 	}()
-	return rerr
 
 	//目的の形式にエンコード
 	switch dstFormat {
