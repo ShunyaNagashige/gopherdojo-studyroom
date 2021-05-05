@@ -47,7 +47,7 @@ func TestSearch(t *testing.T) {
 	}
 }
 
-func ExampleSearch(){
-	fmt.Println(image.Search(".","png"))
+func ExampleSearch() {
+	fmt.Println(image.Search(".", "png"))
 	// output: [testdata/dog_hachi_sasareta.png] <nil>
 }

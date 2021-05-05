@@ -29,15 +29,6 @@ func (err *FileError) Error() string {
 }
 
 func Convert(src, srcFormat, dstFormat string) error {
-
-	if srcFormat == "jpeg" {
-		srcFormat = "jpg"
-	}
-
-	if dstFormat == "jpeg" {
-		dstFormat = "jpg"
-	}
-
 	//読み込み用にファイルを開く
 	sf, err := os.Open(src)
 	if err != nil {
@@ -60,6 +51,14 @@ func Convert(src, srcFormat, dstFormat string) error {
 	}
 	defer df.Close()
 
+	if err := encode(srcFormat, dstFormat, df, img); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func encode(srcFormat, dstFormat string, df *os.File, img image.Image) error {
 	//目的の形式にエンコード
 	switch dstFormat {
 	case "png":
